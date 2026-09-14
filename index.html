@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consultoria & Suporte Técnico Remoto | Prof.ª Fran Freitas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #071530;
+      --card-bg: rgba(14, 34, 73, 0.85);
+      --card-border: #1d4b8f;
+      --primary-blue: #0084ff;
+      --cyan-accent: #00d2ff;
+      --text-main: #ffffff;
+      --text-muted: #c3d9f0;
+      --highlight-box: #0b1f47;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 10% 20%, rgba(0, 132, 255, 0.16) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(0, 210, 255, 0.14) 0px, transparent 50%);
+      color: var(--text-main);
+      padding: 20px 15px 60px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Banner */
+    .banner-wrapper {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 132, 255, 0.25);
+      border: 1px solid var(--card-border);
+      margin-bottom: 25px;
+    }
+
+    .banner-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Cabeçalho */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0, 210, 255, 0.4);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Seção de Valores & Condições */
+    .pricing-section {
+      background: var(--highlight-box);
+      border: 1.5px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+    }
+
+    /* Tabela de Preços */
+    .pricing-tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .tier-box {
+      background: rgba(14, 34, 73, 0.9);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      transition: border-color 0.2s ease;
+    }
+
+    .tier-box:hover {
+      border-color: var(--cyan-accent);
+    }
+
+    .tier-time {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .tier-value {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--cyan-accent);
+    }
+
+    /* Regras / Condições com layout ajustado */
+    .terms-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .term-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(7, 21, 48, 0.6);
+      padding: 14px 16px;
+      border-radius: 10px;
+      border-left: 3px solid var(--cyan-accent);
+    }
+
+    .term-icon {
+      font-size: 1.1rem;
+      color: var(--cyan-accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .term-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .term-text strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Formulário */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label.field-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(10, 25, 55, 0.85);
+      border: 1.5px solid var(--card-border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    select option {
+      background-color: #071530;
+      color: #fff;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--cyan-accent);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 95px;
+    }
+
+    /* Cards de Serviços Interativos */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+
+    .service-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .service-card:hover {
+      border-color: var(--cyan-accent);
+      transform: translateY(-2px);
+    }
+
+    .service-card input[type="checkbox"] {
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--card-border);
+      border-radius: 6px;
+      background: #081736;
+      cursor: pointer;
+      margin-top: 3px;
+      display: grid;
+      place-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .service-card input[type="checkbox"]::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      transform: scale(0);
+      background-color: var(--cyan-accent);
+      border-radius: 2px;
+      transition: 0.2s transform ease-in-out;
+    }
+
+    .service-card input[type="checkbox"]:checked {
+      border-color: var(--cyan-accent);
+    }
+
+    .service-card input[type="checkbox"]:checked::before {
+      transform: scale(1);
+    }
+
+    .service-card.selected {
+      border-color: var(--cyan-accent);
+      background: rgba(0, 132, 255, 0.18);
+      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.15);
+    }
+
+    .service-content h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .service-content ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .service-content ul li {
+      margin-bottom: 3px;
+    }
+
+    /* Box Condicional para Detalhes da Impressora */
+    #printerDetailsBox {
+      display: none;
+      background: rgba(14, 34, 73, 0.95);
+      border: 1.5px dashed var(--cyan-accent);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .printer-box-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cyan-accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .printer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    /* Botão de Envio */
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(90deg, #0084ff, #00d2ff);
+      color: #041226;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 18px rgba(0, 210, 255, 0.35);
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 22px rgba(0, 210, 255, 0.5);
+    }
+
+    @media (min-width: 600px) {
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .printer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Banner de topo -->
+    <div class="banner-wrapper">
+      <img src="banner.jpg" alt="Prof.ª Fran Freitas - Informática">
+    </div>
+
+    <header>
+      <h1>Consultoria & Suporte Remoto</h1>
+      <p>Agendamento direto para atendimento técnico especializado.</p>
+    </header>
+
+    <!-- Box de Valores & Condições -->
+    <div class="pricing-section">
+      <div class="section-title">
+        <span>⏱️ Tabela de Valores por Tempo de Atendimento</span>
+      </div>
+      
+      <div class="pricing-tiers">
+        <div class="tier-box">
+          <div class="tier-time">Até 30 minutos</div>
+          <div class="tier-value">R$ 60,00</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-time">De 31 a 59 minutos</div>
+          <div class="tier-value">R$ 80,00</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-time">A partir de 1 hora</div>
+          <div class="tier-value">R$ 100,00</div>
+        </div>
+      </div>
+
+      <div class="terms-grid">
+        <div class="term-item">
+          <div class="term-icon">✓</div>
+          <div class="term-text">
+            <strong>Pagamento Inicial</strong>
+            O valor referente ao atendimento é pago logo no início da sessão.
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-icon">✓</div>
+          <div class="term-text">
+            <strong>Garantia Total de Devolução</strong>
+            Caso o serviço não seja realizado por algum impedimento técnico ou incompatibilidade que impeça a execução, o valor pago será integralmente devolvido.
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-icon">✓</div>
+          <div class="term-text">
+            <strong>Acesso Remoto Rápido & Sem Custo de Instalação</strong>
+            É necessário ter instalado no seu computador o aplicativo oficial de acesso remoto. Você receberá todas as instruções e o link seguro pelo WhatsApp. O tempo gasto na instalação <u>não é contabilizado</u> no tempo do seu atendimento.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulário Interativo -->
+    <form id="contactForm">
+      
+      <div class="form-group">
+        <label class="field-label" for="nome">Seu Nome Completo:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="horario">Melhor Horário / Turno para Atendimento:</label>
+        <input type="text" id="horario" placeholder="Ex: Manhã (9h às 11h), Noite após as 18h, etc." required>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Selecione o(s) Serviço(s) Desejado(s):</label>
+        <div class="services-grid">
+          
+          <!-- Card 1 -->
+          <label class="service-card">
+            <input type="checkbox" name="servicos" value="Sistema & Ativações">
+            <div class="service-content">
+              <h3>🪟 Sistema & Ativações</h3>
+              <ul>
+                <li>• Ativação do Windows 10 / Windows 11</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- Card 2 -->
+          <label class="service-card">
+            <input type="checkbox" name="servicos" value="Produtividade & Pacote Office">
+            <div class="service-content">
+              <h3>📦 Produtividade & Pacote Office</h3>
+              <ul>
+                <li>• Instalação e ativação do Office</li>
+                <li>• Suporte com Word, Excel, PowerPoint</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- Card 3 -->
+          <label class="service-card">
+            <input type="checkbox" name="servicos" value="Kit Essencial de Programas">
+            <div class="service-content">
+              <h3>🛠️ Kit Essencial de Programas</h3>
+              <ul>
+                <li>• Instalação e configuração de utilitários</li>
+                <li>• Chrome, WinRAR, Leitor PDF, Office</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- Card 4 -->
+          <label class="service-card">
+            <input type="checkbox" name="servicos" value="Otimização & Limpeza Profunda">
+            <div class="service-content">
+              <h3>🚀 Otimização & Limpeza Profunda</h3>
+              <ul>
+                <li>• Fim de travamentos e lentidão</li>
+                <li>• Remoção de malwares / adwares</li>
+                <li>• Liberação de espaço em disco</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- Card 5 -->
+          <label class="service-card">
+            <input type="checkbox" name="servicos" value="Mentoria: IA para Iniciantes">
+            <div class="service-content">
+              <h3>🤖 Mentoria: IA para Iniciantes</h3>
+              <ul>
+                <li>• Aula prática individual passo a passo</li>
+                <li>• ChatGPT, Gemini e ferramentas úteis</li>
+                <li>• Criação de prompts eficientes</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- Card 6: Impressora -->
+          <label class="service-card" id="cardPrinter">
+            <input type="checkbox" id="checkPrinter" name="servicos" value="Instalação & Configuração de Impressora">
+            <div class="service-content">
+              <h3>🖨️ Impressoras & Multifuncionais</h3>
+              <ul>
+                <li>• Instalação de drivers oficiais</li>
+                <li>• Configuração em Rede / Wi-Fi ou Cabo</li>
+                <li>• Alinhamento e testes de impressão</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- Card 7: Outros Serviços -->
+          <label class="service-card">
+            <input type="checkbox" name="servicos" value="Outros serviços">
+            <div class="service-content">
+              <h3>⚙️ Outros serviços</h3>
+              <ul>
+                <li>• Diagnósticos específicos de sistemas</li>
+                <li>• Instalação de programas especiais</li>
+                <li>• Dúvidas e configurações personalizadas</li>
+              </ul>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- Detalhes da Impressora (Aparece ao marcar o card de impressora) -->
+      <div id="printerDetailsBox">
+        <div class="printer-box-title">
+          <span>🖨️ Detalhes da sua Impressora:</span>
+        </div>
+        <div class="printer-grid">
+          <div>
+            <label class="field-label" for="printerModel">Marca e Modelo da Impressora:</label>
+            <input type="text" id="printerModel" placeholder="Ex: Epson L3250, HP Ink Tank 416">
+          </div>
+          <div>
+            <label class="field-label" for="printerConnection">Tipo de Conexão pretendida:</label>
+            <select id="printerConnection">
+              <option value="">Selecione...</option>
+              <option value="Wi-Fi (Sem Fio)">Wi-Fi (Sem Fio / Rede)</option>
+              <option value="Cabo USB">Cabo USB</option>
+              <option value="Ainda não tenho certeza / Preciso de orientação">Ainda não tenho certeza / Preciso de orientação</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="problema">Descreva o problema ou objetivo que deseja resolver:</label>
+        <textarea id="problema" placeholder="Descreva com detalhes o que está acontecendo ou o que você precisa resolver..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        <span>📲 Solicitar Atendimento via WhatsApp</span>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // Destaque visual dos cards ao selecionar
+    document.querySelectorAll('.service-card input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', (e) => {
+        const card = e.target.closest('.service-card');
+        if (e.target.checked) {
+          card.classList.add('selected');
+        } else {
+          card.classList.remove('selected');
+        }
+      });
+    });
+
+    // Mostrar/Ocultar campos da Impressora dinamicamente
+    const checkPrinter = document.getElementById('checkPrinter');
+    const printerDetailsBox = document.getElementById('printerDetailsBox');
+    const printerModel = document.getElementById('printerModel');
+    const printerConnection = document.getElementById('printerConnection');
+
+    checkPrinter.addEventListener('change', function() {
+      if (this.checked) {
+        printerDetailsBox.style.display = 'block';
+        printerModel.setAttribute('required', 'required');
+        printerConnection.setAttribute('required', 'required');
+      } else {
+        printerDetailsBox.style.display = 'none';
+        printerModel.removeAttribute('required');
+        printerConnection.removeAttribute('required');
+      }
+    });
+
+    // Lógica do envio para WhatsApp
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Coloque seu número de WhatsApp com DDD aqui (apenas números):
+      const SEU_WHATSAPP = "5555999158167"; 
+
+      const nome = document.getElementById('nome').value.trim();
+      const horario = document.getElementById('horario').value.trim();
+      const problema = document.getElementById('problema').value.trim();
+      
+      const checkboxes = document.querySelectorAll('input[name="servicos"]:checked');
+      const servicos = Array.from(checkboxes).map(cb => `  • ${cb.value}`).join('\n');
+
+      let mensagem = `*Olá, Prof.ª Fran! Gostaria de agendar um atendimento remoto.*\n\n`;
+      mensagem += `👤 *Nome:* ${nome}\n`;
+      mensagem += `⏰ *Melhor horário:* ${horario}\n\n`;
+      
+      if (servicos.length > 0) {
+        mensagem += `📋 *Serviços Selecionados:*\n${servicos}\n\n`;
+      }
+
+      // Se selecionou impressora, adiciona os dados preenchidos
+      if (checkPrinter.checked) {
+        mensagem += `🖨️ *Dados da Impressora:*\n`;
+        mensagem += `  - Modelo: ${printerModel.value.trim() || "Não informado"}\n`;
+        mensagem += `  - Conexão: ${printerConnection.value || "Não informado"}\n\n`;
+      }
+      
+      mensagem += `📝 *Descrição da solicitação/problema:*\n${problema}\n\n`;
+      mensagem += `💡 _Estou ciente da tabela de valores (R$ 60 até 30min | R$ 80 de 31 a 59min | R$ 100 a partir de 1h) e aguardo orientações para instalação do app de acesso remoto._`;
+
+      const link = `https://wa.me/${SEU_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+      window.open(link, '_blank');
+    });
+  </script>
+</body>
+</html>
